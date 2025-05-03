@@ -1,0 +1,19 @@
+logging:
+  level:
+    ROOT: info
+    org.hibernate.SQL: INFO
+    fr.codecake.airbnbcloneback: INFO
+
+spring:
+  datasource:
+    # url: jdbc:postgresql://${POSTGRES_URL}:5432/${POSTGRES_DB}
+    url: jdbc:postgresql://dpg-d0a0a63uibrs73ajsk40-a:5432/airbnbclonedb
+    username: ramzi
+    password: bCFYS82K1xVsCuvJWPNP5rTZ9jSPElPL
+  jpa:
+    properties:
+      hibernate:
+        default_schema: public
+  liquibase:
+    contexts: prod
+    default-schema: public

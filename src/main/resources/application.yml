@@ -1,0 +1,51 @@
+logging:
+  level:
+    ROOT: INFO
+    org.hibernate.SQL: DEBUG
+    fr.codecake.airbnbcloneback: DEBUG
+
+spring:
+  profiles:
+    active: prod
+  application:
+    name: airbnb-clone-back
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: deferred
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: public
+  liquibase:
+    contexts: dev
+    change-log: classpath:db/changelog/master.xml
+    default-schema: public
+    enabled: true
+  #    drop-first: true
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+server:
+  port: 8080
+
+okta:
+  oauth2:
+    issuer: https://ramzi-jribi.eu.auth0.com/
+    client-id: N9AuKozL9i0ggoxbRFo9JsIDv3aU0xTq
+    client-secret: YCEUy3xL5IjTO_MJfxSWg-ocjRr42crjK4eryM2dj-A6YzajL0jl6JzxSuquUlsd
+
+
+application:
+  auth0:
+    role-landlord-id: rol_gKG0heTcA5a6WxKM
