@@ -16,6 +16,13 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import jakarta.servlet.Filter;
+import jakarta.servlet.http.HttpServletResponse;
+
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
+import org.springframework.http.HttpHeaders;
+
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -83,5 +90,38 @@ public class SecurityConfiguration {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration); // applique à toutes les routes
         return source;
+    }
+
+    @Bean
+    public FilterRegistrationBean<Filter> sameSiteCookieFilter() {
+        FilterRegistrationBean<Filter> registrationBean = new FilterRegistrationBean<>();
+        registrationBean.setFilter((request, response, chain) -> {
+            chain.doFilter(request, response);
+
+            if (response instanceof HttpServletResponse res) {
+                Collection<String> headers = res.getHeaders(HttpHeaders.SET_COOKIE);
+                List<String> modifiedHeaders = headers.stream()
+                        .map(header -> {
+                            String result = header;
+
+                            // Ajoute Secure s'il n'est pas déjà présent
+                            if (!header.toLowerCase().contains("secure")) {
+                                result += "; Secure";
+                            }
+
+                            // Ajoute SameSite=None s'il n'est pas déjà présent
+                            if (!header.toLowerCase().contains("samesite")) {
+                                result += "; SameSite=None";
+                            }
+
+                            return result;
+                        })
+                        .toList();
+
+                res.setHeader(HttpHeaders.SET_COOKIE, String.join(",", modifiedHeaders));
+            }
+        });
+        registrationBean.setOrder(1); // Avant Spring Security
+        return registrationBean;
     }
 }
