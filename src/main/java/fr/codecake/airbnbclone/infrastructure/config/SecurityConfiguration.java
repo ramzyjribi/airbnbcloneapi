@@ -100,6 +100,7 @@ public class SecurityConfiguration {
 
             if (response instanceof HttpServletResponse res) {
                 Collection<String> headers = res.getHeaders(HttpHeaders.SET_COOKIE);
+                System.out.println("==> Filter exécuté, cookies existants : " + headers);
 
                 if (!headers.isEmpty()) {
                     res.setHeader(HttpHeaders.SET_COOKIE, null); // efface tous les cookies envoyés
@@ -117,6 +118,7 @@ public class SecurityConfiguration {
                     }
 
                     res.addHeader(HttpHeaders.SET_COOKIE, result); // renvoie uniquement les versions corrigées
+                    System.out.println("==> Filter exécuté, cookies apres ajout : " + result);
                 }
             }
         });
