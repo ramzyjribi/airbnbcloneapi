@@ -100,28 +100,28 @@ public class SecurityConfiguration {
 
             if (response instanceof HttpServletResponse res) {
                 Collection<String> headers = res.getHeaders(HttpHeaders.SET_COOKIE);
-                List<String> modifiedHeaders = headers.stream()
-                        .map(header -> {
-                            String result = header;
 
-                            // Ajoute Secure s'il n'est pas déjà présent
-                            if (!header.toLowerCase().contains("secure")) {
-                                result += "; Secure";
-                            }
+                if (!headers.isEmpty()) {
+                    res.setHeader(HttpHeaders.SET_COOKIE, null); // efface tous les cookies envoyés
+                }
 
-                            // Ajoute SameSite=None s'il n'est pas déjà présent
-                            if (!header.toLowerCase().contains("samesite")) {
-                                result += "; SameSite=None";
-                            }
+                for (String header : headers) {
+                    String result = header;
 
-                            return result;
-                        })
-                        .toList();
+                    if (!header.toLowerCase().contains("secure")) {
+                        result += "; Secure";
+                    }
 
-                res.setHeader(HttpHeaders.SET_COOKIE, String.join(",", modifiedHeaders));
+                    if (!header.toLowerCase().contains("samesite")) {
+                        result += "; SameSite=None";
+                    }
+
+                    res.addHeader(HttpHeaders.SET_COOKIE, result); // renvoie uniquement les versions corrigées
+                }
             }
         });
-        registrationBean.setOrder(1); // Avant Spring Security
+        registrationBean.setOrder(1);
         return registrationBean;
     }
+
 }
