@@ -42,6 +42,9 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.POST, "api/tenant-listing/search").permitAll()
                         .requestMatchers(HttpMethod.GET, "api/booking/check-availability").permitAll()
                         .requestMatchers(HttpMethod.GET, "api/auth/get-authenticated-user").permitAll()
+                        .requestMatchers(HttpMethod.POST, "api/auth/logout").permitAll()
+                        .requestMatchers(HttpMethod.POST, "api/landlord-listing/create").permitAll()
+                        .requestMatchers(HttpMethod.POST, "api/landlord-listing/get-all").permitAll()
                         .requestMatchers(HttpMethod.GET, "assets/*").permitAll()
                         .anyRequest()
                         .permitAll())
@@ -93,7 +96,7 @@ public class SecurityConfiguration {
         return source;
     }
 
-    @Bean
+    /*@Bean
     public FilterRegistrationBean<Filter> sameSiteCookieFilter() {
         FilterRegistrationBean<Filter> registrationBean = new FilterRegistrationBean<>();
         registrationBean.setFilter((request, response, chain) -> {
@@ -125,6 +128,6 @@ public class SecurityConfiguration {
         });
         registrationBean.setOrder(1);
         return registrationBean;
-    }
+    }*/
 
 }
