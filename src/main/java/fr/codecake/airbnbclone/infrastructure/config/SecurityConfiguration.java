@@ -41,6 +41,7 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET, "api/tenant-listing/get-one").permitAll()
                         .requestMatchers(HttpMethod.POST, "api/tenant-listing/search").permitAll()
                         .requestMatchers(HttpMethod.GET, "api/booking/check-availability").permitAll()
+                        .requestMatchers(HttpMethod.GET, "api/auth/get-authenticated-user").permitAll()
                         .requestMatchers(HttpMethod.GET, "assets/*").permitAll()
                         .anyRequest()
                         .permitAll())

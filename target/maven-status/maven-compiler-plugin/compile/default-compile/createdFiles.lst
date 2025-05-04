@@ -4,6 +4,7 @@ fr\codecake\airbnbclone\listing\application\dto\sub\DescriptionDTO.class
 fr\codecake\airbnbclone\booking\application\dto\NewBookingDTO.class
 fr\codecake\airbnbclone\listing\application\dto\DisplayCardListingDTO.class
 fr\codecake\airbnbclone\booking\presentation\BookingResource.class
+fr\codecake\airbnbclone\infrastructure\config\GlobalExceptionHandler.class
 fr\codecake\airbnbclone\listing\domain\Listing.class
 fr\codecake\airbnbclone\listing\application\dto\vo\BedsVO.class
 fr\codecake\airbnbclone\listing\application\dto\sub\LandlordListingDTO.class

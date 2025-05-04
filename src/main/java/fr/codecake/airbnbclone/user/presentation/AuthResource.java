@@ -32,8 +32,10 @@ public class AuthResource {
     public ResponseEntity<ReadUserDTO> getAuthenticatedUser(
             @AuthenticationPrincipal OAuth2User user) {
         if(user == null) {
+            System.out.println("user is null");
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         } else {
+            System.out.println("user in controller " + user.toString());
             userService.syncWithIdp(user, true);
             ReadUserDTO connectedUser = userService.getAuthenticatedUserFromSecurityContext();
             return new ResponseEntity<>(connectedUser, HttpStatus.OK);

@@ -8,6 +8,7 @@ C:\New apps\airbnb\original\airbnb-clone-backend-main\src\main\java\fr\codecake\
 C:\New apps\airbnb\original\airbnb-clone-backend-main\src\main\java\fr\codecake\airbnbclone\booking\presentation\BookingResource.java
 C:\New apps\airbnb\original\airbnb-clone-backend-main\src\main\java\fr\codecake\airbnbclone\booking\repository\BookingRepository.java
 C:\New apps\airbnb\original\airbnb-clone-backend-main\src\main\java\fr\codecake\airbnbclone\infrastructure\config\DatabaseConfiguration.java
+C:\New apps\airbnb\original\airbnb-clone-backend-main\src\main\java\fr\codecake\airbnbclone\infrastructure\config\GlobalExceptionHandler.java
 C:\New apps\airbnb\original\airbnb-clone-backend-main\src\main\java\fr\codecake\airbnbclone\infrastructure\config\SecurityConfiguration.java
 C:\New apps\airbnb\original\airbnb-clone-backend-main\src\main\java\fr\codecake\airbnbclone\infrastructure\config\SecurityUtils.java
 C:\New apps\airbnb\original\airbnb-clone-backend-main\src\main\java\fr\codecake\airbnbclone\listing\application\dto\CreatedListingDTO.java
