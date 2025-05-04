@@ -49,6 +49,7 @@ public class AuthResource {
         Object[] params = {issuerUri, registration.getClientId(), originUrl};
         String logoutUrl = MessageFormat.format("{0}v2/logout?client_id={1}&returnTo={2}", params);
         request.getSession().invalidate();
+        System.out.println("ici logout");
         return ResponseEntity.ok().body(Map.of("logoutUrl", logoutUrl));
     }
 }

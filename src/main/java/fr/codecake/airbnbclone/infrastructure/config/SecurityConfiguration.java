@@ -44,12 +44,11 @@ public class SecurityConfiguration {
                         .requestMatchers(HttpMethod.GET, "api/auth/get-authenticated-user").permitAll()
                         .requestMatchers(HttpMethod.POST, "api/auth/logout").permitAll()
                         .requestMatchers(HttpMethod.POST, "api/landlord-listing/create").permitAll()
-                        .requestMatchers(HttpMethod.POST, "api/landlord-listing/get-all").permitAll()
+                        .requestMatchers(HttpMethod.GET, "api/landlord-listing/get-all").permitAll()
                         .requestMatchers(HttpMethod.GET, "assets/*").permitAll()
                         .anyRequest()
                         .permitAll())
-                .csrf(csrf -> csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                        .csrfTokenRequestHandler(requestHandler))
+                .csrf(csrf -> csrf.disable())
                 .oauth2Login(oauth2 -> oauth2
                 .successHandler((request, response, authentication) -> {
                     // (Optionnel) Génération d'un token ou traitement de l'utilisateur ici
