@@ -44,7 +44,7 @@ public class SecurityConfiguration {
                     // (Optionnel) Génération d'un token ou traitement de l'utilisateur ici
 
                     // Redirection vers le frontend Angular
-                    response.sendRedirect("http://localhost:4200");
+                    response.sendRedirect("https://voyages-5knn.onrender.com");
                 })
         )
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
