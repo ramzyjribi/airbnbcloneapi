@@ -54,7 +54,7 @@ public class SecurityConfiguration {
                     // (Optionnel) Génération d'un token ou traitement de l'utilisateur ici
 
                     // Redirection vers le frontend Angular
-                    response.sendRedirect("https://voyages-5knn.onrender.com");
+                    response.sendRedirect("https://myvoyage.onrender.com");
                 })
         )
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(Customizer.withDefaults()))
@@ -85,7 +85,7 @@ public class SecurityConfiguration {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("https://voyages-5knn.onrender.com")); // autorise Angular
+        configuration.setAllowedOrigins(List.of("https://myvoyage.onrender.com")); // autorise Angular
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
         configuration.setAllowCredentials(true); // important si tu utilises les cookies ou le header Authorization

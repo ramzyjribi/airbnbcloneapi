@@ -7,9 +7,9 @@ logging:
 spring:
   datasource:
     # url: jdbc:postgresql://${POSTGRES_URL}:5432/${POSTGRES_DB}
-    url: jdbc:postgresql://dpg-d13ecuruibrs7385jdug-a.oregon-postgres.render.com/airbnbclonedb_t355
-    username: ramzi
-    password: 5vQkyJYVxGU919KhegjTjTrWPS8zDL30
+    url: jdbc:postgresql://dpg-d1506bh5pdvs739d0rq0-a.frankfurt-postgres.render.com/myvoyagedb
+    username: myvoyagedb_user
+    password: hG0JqAIz0cNJvfevj4AUZCYoOTFKouQN
   jpa:
     properties:
       hibernate:
